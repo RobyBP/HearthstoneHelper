@@ -1,30 +1,21 @@
 package com.robybp.hearthstonehelper.ui.main
 
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import com.robybp.hearthstonehelper.R
+import com.robybp.hearthstonehelper.ui.cards.CardsScreen
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun MainScreen() {
-    Scaffold(
-        topBar = { TopScaffoldBar() },
-        content = {},
-        bottomBar = { BottomNavigationBar() }
-    )
-}
 
-@Composable
-fun TopScaffoldBar() {
-    TopAppBar(
-        title = { Text(text = "Cards screen") },
-        navigationIcon = {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_filter),
-                contentDescription = "filter icon"
-            )
-        }
-    )
+    Scaffold(
+        bottomBar = { BottomNavigationBar() },
+        content = { CardsScreen(viewModel = getViewModel()) })
 }
 
 @Composable
