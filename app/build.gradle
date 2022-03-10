@@ -4,6 +4,15 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def rapidApiHost = properties.getProperty("x-rapidapi-host")
+def rapidApiKey = properties.getProperty("x-rapidapi-key")
+
+if (rapidApiHost == null || rapidApiKey == null) {
+    throw IllegalStateException("Rapid api host or token missing, configure it in local.properties file")
+}
+
 android {
     compileSdk 32
 
@@ -13,6 +22,10 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "BASE_URL", "\"https://omgvamp-hearthstone-v1.p.rapidapi.com\""
+        buildConfigField "String", "RAPID_API_HOST", "\"$rapidApiHost\""
+        buildConfigField "String", "RAPID_API_KEY", "\"$rapidApiKey\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -92,7 +105,7 @@ dependencies {
     implementation "io.insert-koin:koin-androidx-compose:$koin_version"
 
     //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
     //Serialization
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2'
