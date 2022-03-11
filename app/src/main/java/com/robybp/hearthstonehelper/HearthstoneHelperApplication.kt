@@ -1,6 +1,7 @@
 package com.robybp.hearthstonehelper
 
 import android.app.Application
+import com.robybp.hearthstonehelper.di.repositoryModule
 import com.robybp.hearthstonehelper.di.retrofitModule
 import com.robybp.hearthstonehelper.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -19,6 +20,7 @@ class HearthstoneHelperApplication : Application() {
     private fun getModules() =
         listOf(
             viewModelModule,
-            retrofitModule
+            retrofitModule,
+            repositoryModule,
         )
 }
