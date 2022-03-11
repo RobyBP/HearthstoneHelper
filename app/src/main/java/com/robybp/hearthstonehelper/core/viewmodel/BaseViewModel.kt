@@ -10,7 +10,7 @@ abstract class BaseViewModel : ViewModel() {
         Log.e(this.javaClass.name, "An error occurred: $throwable")
     }
 
-    private val bgScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+    private val bgScope = CoroutineScope(Dispatchers.IO + SupervisorJob() + exceptionHandler)
 
-    private fun runInBackground(block: suspend () -> Unit) = bgScope.launch { block() }
+    fun runInBackground(block: suspend () -> Unit) = bgScope.launch { block() }
 }
