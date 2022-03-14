@@ -1,66 +1,66 @@
 package com.robybp.hearthstonehelper.model
 
+import androidx.compose.runtime.Immutable
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Immutable
 @Serializable
 data class CardResponse(
     @SerialName("cardId")
     val id: String,
-    @SerialName("dbFId")
-    val databaseId: Long,
     @SerialName("name")
     val name: String,
     @SerialName("cardSet")
     val cardSet: String,
     @SerialName("type")
-    val type: String?,
+    val type: String,
     @SerialName("faction")
-    val faction: String,
+    val faction: String? = null,
     @SerialName("rarity")
-    val rarity: String,
+    val rarity: String? = null,
     @SerialName("cost")
-    val cost: Int,
+    val cost: Int? = null,
     @SerialName("attack")
-    val attack: Int,
+    val attack: Int? = null,
     @SerialName("health")
-    val health: Int,
+    val health: Int? = null,
     @SerialName("durability")
-    val durability: Int?,
+    val durability: Int? = null,
     @SerialName("armor")
-    val armor: Int,
+    val armor: Int? = null,
     @SerialName("inPlayText")
-    val inPlayText: String,
+    val inPlayText: String? = "",
     @SerialName("text")
-    val description: String,
+    val description: String = "",
     @SerialName("flavour")
-    val flavour: String,
+    val flavour: String = "",
     @SerialName("artist")
-    val artist: String,
+    val artist: String = "Unknown",
     @SerialName("collectable")
-    val isCollectable: Boolean,
+    val isCollectable: Boolean? = null,
     @SerialName("elite")
-    val isElite: Boolean,
+    val isElite: Boolean? = null,
     @SerialName("race")
-    val race: String,
+    val race: String? = "Undefined",
     @SerialName("playerClass")
     val playerClass: String,
     @SerialName("multiClassGroup")
-    val isMultiClass: Boolean,
+    val isMultiClass: Boolean? = null,
     @SerialName("classes")
-    val multipleClasses: List<String>?,
+    val multipleClasses: List<String> = listOf(),
     @SerialName("img")
-    val imageUrl: String?,
+    val imageUrl: String? = null,
     @SerialName("imgGold")
-    val goldenImageUrl: String?,
+    val goldenImageUrl: String? = null,
     @SerialName("locale")
     val locale: String,
     @SerialName("mechanics")
-    val mechanics: List<Mechanics>?,
+    val mechanics: List<Mechanics> = listOf(),
     @SerialName("howToGet")
-    val howToGet: String?,
+    val howToGet: String = "Unknown",
     @SerialName("howToGetGold")
-    val howToGetGold: String?,
+    val howToGetGold: String = "Unknown",
 )
 
 @Serializable
