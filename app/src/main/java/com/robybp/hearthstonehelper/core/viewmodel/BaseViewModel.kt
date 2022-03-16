@@ -13,4 +13,9 @@ abstract class BaseViewModel : ViewModel() {
     private val bgScope = CoroutineScope(Dispatchers.IO + SupervisorJob() + exceptionHandler)
 
     fun runInBackground(block: suspend () -> Unit) = bgScope.launch { block() }
+
+    override fun onCleared() {
+        bgScope.cancel()
+        super.onCleared()
+    }
 }
