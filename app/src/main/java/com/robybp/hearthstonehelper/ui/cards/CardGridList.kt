@@ -52,7 +52,7 @@ fun GridView(columnCount: Int, cards: List<CardResponse>) {
 
 @Composable
 private fun RowItem(rowItems: List<IconResource>) {
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
         for (element in rowItems)
             GridIconAndText(element)
     }
@@ -60,7 +60,7 @@ private fun RowItem(rowItems: List<IconResource>) {
 
 @Composable
 private fun GridIconAndText(iconResource: IconResource) {
-    Box(modifier = Modifier.padding(horizontal = 10.dp)) {
+    Box {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             AsyncImage(
                 model = iconResource.imageUrl,
@@ -69,6 +69,7 @@ private fun GridIconAndText(iconResource: IconResource) {
             )
             Spacer(modifier = Modifier.size(5.dp))
             Text(
+                softWrap = false,
                 text = iconResource.name,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center,
