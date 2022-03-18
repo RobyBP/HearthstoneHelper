@@ -33,7 +33,7 @@ fun CardsScreen(viewModel: CardsViewModel) {
             Icon(painter = painterResource(id = R.drawable.ic_filter), contentDescription = "")
         }
         ModalDrawer(
-            drawerContent = { CardResultList(content = viewState.value.cardListResult) },
+            drawerContent = { },
             drawerState = drawerState,
             content = {
                 CardResultList(
